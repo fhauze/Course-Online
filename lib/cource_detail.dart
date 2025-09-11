@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_course/NavBar.dart';
+import 'package:online_course/components/NavBar.dart';
 import 'package:online_course/chats.dart';
 
 class CourseDetail extends StatefulWidget {

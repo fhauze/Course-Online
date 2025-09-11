@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:online_course/NavBar.dart';
+import 'package:online_course/HomeScreen.dart';
+import 'package:online_course/components/NavBar.dart';
 import 'package:online_course/course_list.dart';
 
 void main() {
@@ -36,6 +37,7 @@ class _LandingPageState extends State<LandingPage> {
     return Scaffold(
       drawer: NavBar(),
       body: Container(
+        color: Colors.transparent,
         width: double.infinity,
         child: Stack(
           children: [
@@ -43,7 +45,6 @@ class _LandingPageState extends State<LandingPage> {
               padding: const EdgeInsets.only(bottom: 100),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.yellow,
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(80),
                   ),
@@ -110,7 +111,16 @@ class _LandingPageState extends State<LandingPage> {
                                     () => Scaffold.of(context).openDrawer(),
                               ),
                         ),
-                        Icon(Icons.abc, color: Colors.white),
+                        GestureDetector(
+                          child: Icon(Icons.shopping_cart, color: Colors.white),
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) => HomeScreen(),
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),

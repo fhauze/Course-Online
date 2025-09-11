@@ -28,159 +28,177 @@ class _ChatState extends State<Chats> {
                 borderRadius: BorderRadius.all(Radius.circular(25)),
                 color: Colors.white,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Stack(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10.0,
-                      horizontal: 16,
-                    ),
-                    child: Text("Recent Chats"),
-                  ),
-                  // SizedBox(height: 10),
-                  GestureDetector(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: SizedBox(
-                        height: 60,
-                        width: double.infinity,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 10.0,
+                          horizontal: 16,
+                        ),
+                        child: Text("Recent Chats"),
+                      ),
+                      // SizedBox(height: 10),
+                      GestureDetector(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: SizedBox(
+                            height: 60,
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Center(
-                                  child: CircleAvatar(
-                                    radius: 25,
-                                    backgroundImage: AssetImage(
-                                      "assets/images/profile.png",
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Center(
+                                      child: CircleAvatar(
+                                        radius: 25,
+                                        backgroundImage: AssetImage(
+                                          "assets/images/profile.png",
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    SizedBox(width: 10),
+                                    SizedBox(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(height: 10),
+                                          Text(
+                                            "name",
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            "Message that....",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(width: 10),
-                                SizedBox(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: 10),
-                                      Text(
-                                        "name",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                // Time adn State
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(height: 5),
+                                    Text("14:11"),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.lightGreenAccent,
                                       ),
-                                      Text(
-                                        "Message that....",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                      width: 25,
+                                      height: 25,
+                                      child: Icon(Icons.check),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                            // Time adn State
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(height: 5),
-                                Text("14:11"),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.lightGreenAccent,
-                                  ),
-                                  width: 25,
-                                  height: 25,
-                                  child: Icon(Icons.check),
-                                ),
-                              ],
-                            ),
-                          ],
+                          ),
                         ),
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => ChatOpen(),
+                            ),
+                          );
+                        },
                       ),
-                    ),
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => ChatOpen(),
+
+                      GestureDetector(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: SizedBox(
+                            height: 60,
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Center(child: CircleAvatar(radius: 25)),
+                                    SizedBox(width: 10),
+                                    SizedBox(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(height: 10),
+                                          Text(
+                                            "name",
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            "Message that....",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                // Time adn State
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(height: 5),
+                                    Text("14:11"),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.lightGreenAccent,
+                                      ),
+                                      width: 25,
+                                      height: 25,
+                                      child: Icon(Icons.check),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                      );
-                    },
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => ChatOpen(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                  GestureDetector(
+                  Align(
+                    alignment: Alignment.bottomRight, // Position the button
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: SizedBox(
-                        height: 60,
-                        width: double.infinity,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Center(child: CircleAvatar(radius: 25)),
-                                SizedBox(width: 10),
-                                SizedBox(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: 10),
-                                      Text(
-                                        "name",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Text(
-                                        "Message that....",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            // Time adn State
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(height: 5),
-                                Text("14:11"),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.lightGreenAccent,
-                                  ),
-                                  width: 25,
-                                  height: 25,
-                                  child: Icon(Icons.check),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                      padding: const EdgeInsets.all(16.0), // Add some padding
+                      child: FloatingActionButton(
+                        onPressed: () {
+                          // Handle button press
+                          print('Floating button pressed!');
+                        },
+                        child: const Icon(Icons.add),
                       ),
                     ),
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => ChatOpen(),
-                        ),
-                      );
-                    },
                   ),
                 ],
               ),
@@ -194,89 +212,108 @@ class _ChatState extends State<Chats> {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   color: Colors.white,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Stack(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 10.0,
-                        horizontal: 16,
-                      ),
-                      child: Text("Group Chats"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: SizedBox(
-                        height: 60,
-                        width: double.infinity,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            GestureDetector(
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Center(
-                                    child: CircleAvatar(
-                                      radius: 25,
-                                      backgroundImage: AssetImage(
-                                        "assets/images/profile.png",
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  SizedBox(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(height: 10),
-                                        Text(
-                                          "name",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          "Message that....",
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder:
-                                        (BuildContext context) => ChatOpen(),
-                                  ),
-                                );
-                              },
-                            ),
-                            // Time adn State
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 10.0,
+                            horizontal: 16,
+                          ),
+                          child: Text("Group Chats"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: SizedBox(
+                            height: 60,
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SizedBox(height: 5),
-                                Text("14:11"),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.lightGreenAccent,
+                                GestureDetector(
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Center(
+                                        child: CircleAvatar(
+                                          radius: 25,
+                                          backgroundImage: AssetImage(
+                                            "assets/images/profile.png",
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      SizedBox(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(height: 10),
+                                            Text(
+                                              "name",
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              "Message that....",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  width: 25,
-                                  height: 25,
-                                  child: Icon(Icons.check),
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder:
+                                            (BuildContext context) =>
+                                                ChatOpen(),
+                                      ),
+                                    );
+                                  },
+                                ),
+                                // Time adn State
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(height: 5),
+                                    Text("14:11"),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.lightGreenAccent,
+                                      ),
+                                      width: 25,
+                                      height: 25,
+                                      child: Icon(Icons.check),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight, // Position the button
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0), // Add some padding
+                        child: FloatingActionButton(
+                          onPressed: () {
+                            // Handle button press
+                            print('Floating button pressed!');
+                          },
+                          child: const Icon(Icons.add),
                         ),
                       ),
                     ),

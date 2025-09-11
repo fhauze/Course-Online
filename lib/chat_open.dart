@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:online_course/components/AvartActive.dart';
 
 class ChatOpen extends StatefulWidget {
   @override
@@ -25,6 +24,7 @@ class _ChatOpenState extends State<ChatOpen> {
                             : MainAxisAlignment.end,
                     children: [
                       Container(
+                        width: 200,
                         margin: const EdgeInsets.all(10),
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
@@ -40,7 +40,8 @@ class _ChatOpenState extends State<ChatOpen> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
-                          "Pesan $index",
+                          "Pesan ini adalah pesan saya yang saya tulis sendiri. $index",
+                          softWrap: true,
                           style: const TextStyle(color: Colors.white),
                         ),
                       ),
