@@ -13,3 +13,13 @@ double mockDistanceKm(double lat1, double lon1, double lat2, double lon2) {
 }
 
 double _deg2rad(double deg) => deg * (pi / 180);
+
+String formatPrice(int price) {
+  if (price >= 1000000) {
+    return "${(price / 1000000).toStringAsFixed(1)} Jt";
+  } else if (price >= 1000) {
+    return "${(price / 1000).toStringAsFixed(0)} K";
+  } else {
+    return price.toString();
+  }
+}

@@ -5,6 +5,7 @@ import 'package:online_course/models/store.dart';
 class StoreDetailScreen extends StatelessWidget {
   final Store store;
   const StoreDetailScreen({required this.store});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

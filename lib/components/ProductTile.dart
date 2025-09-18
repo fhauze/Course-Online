@@ -20,13 +20,23 @@ class ProductTile extends StatelessWidget {
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       subtitle: Text('Short description'),
-      trailing: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('€${(index + 1) * 2}'),
-          SizedBox(height: 6),
-          ElevatedButton(onPressed: () {}, child: Text('Add')),
-        ],
+      trailing: IntrinsicHeight(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('€${(index + 1) * 2}'),
+            // SizedBox(height: 6),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Add'),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                visualDensity: VisualDensity.compact,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

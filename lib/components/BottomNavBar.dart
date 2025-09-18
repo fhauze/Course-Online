@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:online_course/VendorDashboard.dart';
 import 'package:online_course/SearchScreen.dart';
+import 'package:online_course/profile.dart';
 
 class BottomNav extends StatelessWidget {
   @override
@@ -22,8 +24,24 @@ class BottomNav extends StatelessWidget {
               icon: Icon(Icons.search),
             ),
             SizedBox(width: 48),
-            IconButton(onPressed: () {}, icon: Icon(Icons.receipt_long)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.person)),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => VendorDashboard()),
+                );
+              },
+              icon: Icon(Icons.receipt_long),
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => Profile()),
+                );
+              },
+              icon: Icon(Icons.person),
+            ),
           ],
         ),
       ),

@@ -43,10 +43,10 @@ class _CourseDetailState extends State<CourseDetail> {
                           DataRow(
                             cells: [
                               DataCell(
-                                Container(width: 200, child: Text("Lesson $i")),
+                                Container(width: 150, child: Text("Lesson $i")),
                               ),
                               DataCell(
-                                Container(width: 200, child: Text("$i:30")),
+                                Container(width: 150, child: Text("$i:30")),
                               ),
                             ],
                           ),
@@ -56,7 +56,7 @@ class _CourseDetailState extends State<CourseDetail> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               SizedBox(
                 height: 20,
                 child: Align(
@@ -93,35 +93,16 @@ class _CourseDetailState extends State<CourseDetail> {
                                 size: 40,
                               ),
                               SizedBox(height: 10),
-                              if (index == 0)
-                                GestureDetector(
-                                  child: Center(
-                                    child: Text(
-                                      "data $index",
-                                      style: TextStyle(
-                                        color: Colors.blueAccent,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) => Chats(),
-                                      ),
-                                    );
-                                  },
-                                )
-                              else
-                                Center(
-                                  child: Text(
-                                    "data $index",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+
+                              Center(
+                                child: Text(
+                                  "data $index",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
+                              ),
 
                               SizedBox(height: 10),
                             ],
@@ -179,10 +160,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onTap: () => Navigator.pop(context),
                   ),
                   Text(title, style: TextStyle(color: Colors.white)),
-                  Icon(Icons.abc, color: Colors.white),
+                  CircleAvatar(
+                    backgroundColor: Colors.white12,
+                    child: Icon(Icons.person),
+                  ),
                 ],
               ),
-              SizedBox(height: 80),
+              SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -228,5 +212,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(200);
+  Size get preferredSize => const Size.fromHeight(190);
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_course/CourseDetailScreen.dart';
 import 'package:online_course/cource_detail.dart';
 
 class CourseList extends StatefulWidget {
@@ -13,7 +14,7 @@ class _CourseListState extends State<CourseList> {
     return Scaffold(
       appBar: CustomAppBar(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: Container(
           child: ListView.builder(
             itemCount: 10,
@@ -67,8 +68,8 @@ class _CourseListState extends State<CourseList> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder:
-                                  (BuildContext context) => CourseDetail(
-                                    title: "Course ${index + 1}",
+                                  (BuildContext context) => CourseDetailScreen(
+                                    // title: "Course ${index + 1}",
                                   ),
                             ),
                           );
@@ -120,10 +121,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     child: Icon(Icons.arrow_back, color: Colors.white),
                     onTap: () => Navigator.pop(context),
                   ),
-                  Icon(Icons.abc, color: Colors.white),
+                  CircleAvatar(
+                    backgroundColor: Colors.white12,
+                    child: Icon(Icons.person),
+                  ),
                 ],
               ),
-              SizedBox(height: 100),
+              SizedBox(height: 50),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_course/StoreDetailScreen.dart';
 import 'package:online_course/models/store.dart';
-
 import 'util/utils.dart';
 
 class FilteredStoreCard extends StatelessWidget {
@@ -10,6 +9,7 @@ class FilteredStoreCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dist = mockDistanceKm(-6.200, 106.816, store.lat, store.lng);
+    debugPrint(store.toString());
     return Card(
       color: Colors.white10,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -47,7 +47,7 @@ class FilteredStoreCard extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Spacer(),
-                        Text('€' * store.priceLevel),
+                        Text(store.category.toString()),
                       ],
                     ),
                     SizedBox(height: 6),

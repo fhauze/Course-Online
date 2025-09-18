@@ -25,7 +25,7 @@ class _ChatState extends State<Chats> {
               width: double.infinity,
               height: MediaQuery.of(context).size.height - 350,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(25)),
+                // borderRadius: BorderRadius.all(Radius.circular(25)),
                 color: Colors.white,
               ),
               child: Stack(
@@ -209,7 +209,7 @@ class _ChatState extends State<Chats> {
                 width: double.infinity,
                 height: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  // borderRadius: BorderRadius.all(Radius.circular(20)),
                   color: Colors.white,
                 ),
                 child: Stack(
@@ -339,8 +339,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       width: double.infinity,
       height: 200,
       decoration: BoxDecoration(
-        color: Colors.grey,
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        color: Colors.blueAccent,
+        // borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
       ),
       child: Column(
         children: [
@@ -351,7 +351,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: GestureDetector(
-                  child: Icon(Icons.arrow_back, size: 27),
+                  child: Icon(Icons.arrow_back, size: 27, color: Colors.white),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -359,11 +359,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               Text(
                 "Center Title",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Icon(Icons.search),
+                child: Icon(Icons.search, color: Colors.white),
               ),
             ],
           ),
@@ -384,7 +388,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       Center(
                         child: Text(
                           " User ${index + 1}",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],

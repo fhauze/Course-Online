@@ -16,12 +16,12 @@ class _SearchScreenState extends State<SearchScreen> {
   bool useMyLocation = true;
   double radiusKm = 2.0;
   RangeValues priceRange = RangeValues(1, 3);
+  RangeValues priceRng = RangeValues(10000, 1000000);
   String query = '';
   List<Store> results = mockStores;
   bool isMapView = true;
   LatLng? _selectedPoint;
   LatLng? _userLocation;
-
   void applyFilters() {
     // For demo: simple filtering by price and a mock distance calculation
     setState(() {
@@ -59,7 +59,15 @@ class _SearchScreenState extends State<SearchScreen> {
     super.initState();
     _initLocation();
     applyFilters();
+    // _getNearByStores();
   }
+
+  // void _getNearByStores() async {
+  //   final stores = await OSMService.fetchNearbyStores(_userLocation!);
+  //   setState(() {
+  //     results = stores;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -265,7 +273,7 @@ class _SearchScreenState extends State<SearchScreen> {
       backgroundColor: Colors.transparent,
       builder: (context) {
         return StatefulBuilder(
-          builder: (context, setSB) {
+          builder: (context, updateMDL) {
             return Container(
               height: MediaQuery.of(context).size.height * 0.6,
               padding: EdgeInsets.all(16),
@@ -292,11 +300,28 @@ class _SearchScreenState extends State<SearchScreen> {
 
                   // Location toggle + radius
                   SwitchListTile(
-                    title: Text('Gunakan Lokasiku'),
+                    title: Text(
+                      'Gunakan Lokasiku',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
                     value: useMyLocation,
-                    onChanged: (v) => setSB(() => useMyLocation = v),
+                    onChanged: (v) => updateMDL(() => useMyLocation = v),
                   ),
-                  Text('Radius: ${radiusKm.toStringAsFixed(1)} km'),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Text(
+                      'Radius: ${radiusKm.toStringAsFixed(1)} km',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                   Slider(
                     min: 0.5,
                     max: 50,
@@ -304,30 +329,69 @@ class _SearchScreenState extends State<SearchScreen> {
                     value: radiusKm,
                     label: '${radiusKm} km',
                     onChanged:
-                        (v) => setSB(
+                        (v) => updateMDL(
                           () => radiusKm = double.parse(v.toStringAsFixed(1)),
                         ),
                   ),
 
                   SizedBox(height: 8),
-                  Text('Harga'),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Text(
+                      'Harga Range',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                   RangeSlider(
                     values: priceRange,
                     min: 1,
                     max: 3,
-                    divisions: 2,
+                    divisions: 3,
                     labels: RangeLabels(
                       priceLabel(priceRange.start.toInt()),
                       priceLabel(priceRange.end.toInt()),
                     ),
                     onChanged:
-                        (r) => setSB(
+                        (r) => updateMDL(
                           () =>
                               priceRange = RangeValues(
                                 r.start.roundToDouble(),
                                 r.end.roundToDouble(),
                               ),
                         ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Text(
+                      'Rentang Harga',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  RangeSlider(
+                    values: priceRng,
+                    min: 1000,
+                    max: 1000000,
+                    divisions: 10,
+                    labels: RangeLabels(
+                      priceLabel(priceRange.start.toInt()),
+                      priceLabel(priceRange.end.toInt()),
+                    ),
+                    onChanged:
+                        (ac) => updateMDL(() {
+                          priceRng = ac;
+                        }),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [Text("Murah"), Text("Menengah"), Text("Mahal")],
                   ),
 
                   Spacer(),
@@ -337,7 +401,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         child: OutlinedButton(
                           onPressed: () {
                             // Reset
-                            setSB(() {
+                            updateMDL(() {
                               useMyLocation = true;
                               radiusKm = 2.0;
                               priceRange = RangeValues(1, 3);

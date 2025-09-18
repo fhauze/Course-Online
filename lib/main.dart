@@ -32,6 +32,17 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  // void _initDB() async {
+  //   final db = await SQLDatabase.initDB();
+  //   print("Database siap ✅ path: ${db.path}");
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+    // _initDB();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,7 +138,6 @@ class _LandingPageState extends State<LandingPage> {
                 ],
               ),
             ),
-
             Positioned(
               top: 100,
               left: 0,
